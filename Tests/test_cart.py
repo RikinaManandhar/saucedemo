@@ -17,12 +17,14 @@ class TestCart:
         remove_button = self.cart_page.wait_for_visibility(self.cart_page.remove_backpack)
         assert remove_button.is_displayed(), "Backpack not added to cart (Remove button not visible)"
 
+    @pytest.mark.verify_item_count
     def test_verify_item_count_in_badge_and_cart(self):
         self.login_page= Login(self.driver)
         # self.base_page= BasePage(self.driver)
         self.cart_page= Cart(self.driver)
+        data = self.login_page.read_test_data('testdata.json')
 
-        self.login_page.login("standard_user", "secret_sauce")
+        self.login_page.login(data['username'], data['password'])
         self.cart_page.add_to_cart(self.cart_page.add_backpack)
         self.cart_page.add_to_cart(self.cart_page.add_bolt_tshirt)
         self.cart_page.add_to_cart(self.cart_page.add_bikelight)

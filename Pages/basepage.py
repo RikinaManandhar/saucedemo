@@ -1,7 +1,8 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-import time
+import json
+import os
 
 class BasePage:
     
@@ -31,6 +32,10 @@ class BasePage:
         element = self.wait_for_visibility(locator)
         return element.text
         
+    def read_test_data(self, filename):
+        filepath = os.path.join(os.path.dirname(__file__), '..', 'data', filename)
+        with open(filepath, 'r') as file:
+            return json.load(file)
 
    
 
