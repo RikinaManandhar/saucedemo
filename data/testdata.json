@@ -1,5 +1,6 @@
 {
   "username": "standard_user",
   "password": "secret_sauce",
-  "url": "https://www.saucedemo.com/"
+  "url": "https://www.saucedemo.com/",
+  "sort_option_value": "lohi"
 }

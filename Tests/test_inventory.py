@@ -57,4 +57,22 @@ class TestInventory:
         assert login_button.is_displayed(),"Login button not present"
 
 
+    @pytest.mark.verify_sorting
+    def test_verify_higher_to_lower_price_sorting(self):
+        self.base_page= BasePage(self.driver)
+        self.login_page= Login(self.driver)
+        self.inventory_page= Inventory(self.driver)
+
+        data = self.login_page.read_test_data('testdata.json')
+        self.login_page.login("standard_user", "secret_sauce")
+        self.inventory_page.choose_filter(data["sort_option_value"])
+
+        prices = self.inventory_page.get_all_prices()
+        assert prices == sorted(prices), "Prices are not sorted low to high!"
+
+
+
+
+
+
 
