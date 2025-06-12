@@ -65,7 +65,20 @@ class TestInventory:
 
         data = self.login_page.read_test_data('testdata.json')
         self.login_page.login("standard_user", "secret_sauce")
-        self.inventory_page.choose_filter(data["sort_option_value"])
+        self.inventory_page.choose_filter(data["high_to_low"])
+
+        prices = self.inventory_page.get_all_prices()
+        assert prices == sorted(prices, reverse=True), "Prices are not sorted high to low!"
+
+    @pytest.mark.verify_sorting
+    def test_verify_lower_to_higher_price(self):
+        self.base_page= BasePage(self.driver)
+        self.login_page= Login(self.driver)
+        self.inventory_page= Inventory(self.driver)
+
+        data = self.login_page.read_test_data('testdata.json')
+        self.login_page.login("standard_user", "secret_sauce")
+        self.inventory_page.choose_filter(data["low_to_high"])
 
         prices = self.inventory_page.get_all_prices()
         assert prices == sorted(prices), "Prices are not sorted low to high!"

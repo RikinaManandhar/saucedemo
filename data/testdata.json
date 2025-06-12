@@ -2,5 +2,6 @@
   "username": "standard_user",
   "password": "secret_sauce",
   "url": "https://www.saucedemo.com/",
-  "sort_option_value": "lohi"
+  "high_to_low": "hilo",
+  "low_to_high": "lohi"
 }
