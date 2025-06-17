@@ -3,5 +3,11 @@
   "password": "secret_sauce",
   "url": "https://www.saucedemo.com/",
   "high_to_low": "hilo",
-  "low_to_high": "lohi"
+  "low_to_high": "lohi",
+
+  "login_credentials": [
+    ["standard_user", "secret_sauce"],
+    ["problem_user", "secret_sauce"],
+    ["performance_glitch_user","secret_sauce"]
+  ]
 }
