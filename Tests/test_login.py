@@ -9,9 +9,10 @@ import pytest
 class TestOrangeHRM:
 
     @pytest.mark.validlogin
-    def test_login_with_valid_credentials(self):
+    @pytest.mark.parametrize("username, password", BasePage.read_test_data("testdata.json")["login_credentials"])
+    def test_login_with_valid_credentials(self,username,password):
         self.login_page = Login(self.driver)
-        self.login_page.login("standard_user", "secret_sauce")
+        self.login_page.login(username,password)
         assert self.login_page.is_login_successful(), "Login should succeed with valid credentials"
 
     def test_login_with_empty_credentials(self):
